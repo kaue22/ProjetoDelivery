@@ -24,7 +24,7 @@ if($nome == ''){
 		echo 'Registro já Cadastrado';
 		exit();
 	}
-
+	echo "Senha";
 
 	$res = $pdo->prepare("INSERT into usuarios (nome, cpf, telefone, usuario, senha, nivel) values (:nome, :cpf, :telefone, :usuario, :senha, :nivel)");
 

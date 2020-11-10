@@ -11,6 +11,9 @@ RewriteRule ^login(.*)$ login.php [L]
 RewriteRule ^adicionais(.*)$ adicionais.php [L]
 RewriteRule ^finalizar-compra(.*)$ finalizar-compra.php [L]
 
+Header add Access-Control-Allow-Origin "*"
+Header add Access-Control-Allow-Methods: "GET,POST,OPTIONS,DELETE,PUT"
+
 AddHandler application/x-httpd-php70 .php
 <IfModule mod_suphp.c>
 suPHP_ConfigPath /opt/php70/lib

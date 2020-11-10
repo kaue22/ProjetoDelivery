@@ -3,13 +3,14 @@ include_once("cabecalho.php");
 include_once("conexao.php");
 
 //VERIFICAR SE EXISTE UM USUÁRIO ADMINISTRADOR, CASO NÃO EXISTA, CRIAR.
-$senha = '123';
+$senha = 'admin123';
+$senhaNew = base64_encode($senha);
 $res_usuarios = $pdo->query("SELECT * from usuarios where nivel = 'Admin'");
 $dados_usuarios = $res_usuarios->fetchAll(PDO::FETCH_ASSOC);
 $total_usuarios = count($dados_usuarios);
 
 if ($total_usuarios == 0) {
-    $res_insert = $pdo->query("INSERT into usuarios (nome, cpf, telefone, usuario, senha, nivel) values ('Administrador', '000.000.000-00', '3333-3333', '$email_adm', '$senha', 'Admin')");
+    $res_insert = $pdo->query("INSERT into usuarios (nome, cpf, telefone, usuario, senha, nivel) values ('Administrador', '000.000.000-00', '3333-3333', '$email_adm', '$senhaNew', 'Admin')");
 }
 ?>
 

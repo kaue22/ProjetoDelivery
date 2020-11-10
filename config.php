@@ -1,6 +1,6 @@
 <?php 
 
-$email_adm = 'kaue@gmail.com';
+$email_adm = 'admin';
 $url_site = 'http://localhost:8080/';
 $nome_loja = 'Freitas Delivery';
 

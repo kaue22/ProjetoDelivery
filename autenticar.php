@@ -10,13 +10,13 @@ if (empty($_POST['username']) || empty($_POST['pass'])) {
 $usuario = $_POST['username'];
 $senha = $_POST['pass'];
 
-echo "Senha";
-echo $senha;
+/*echo "Senha";
+echo $senha;*/
 
 $senhaNew = base64_encode($senha);
 
-echo "Senha nova";
-echo $senhaNew;
+/*echo "Senha nova";
+echo $senhaNew;/*
 
 
 /*$senhaNew = base64_decode($senha);
