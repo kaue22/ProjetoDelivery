@@ -1,6 +1,8 @@
 <?php
-
+header("Access-Control-Allow-Origin: *");
+header('Access-Control-Allow-Headers: *');
 include_once('conexao.php');
+
 
 $postjson = json_decode(file_get_contents('php://input'), true);
 
