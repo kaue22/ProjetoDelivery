@@ -1,4 +1,4 @@
-<?php 
+<?php
 $pagina = 'balconistas';
 
 $pagina_pag = intval(@$_GET['pagina']);
@@ -7,14 +7,14 @@ $itens_pag = intval(@$_GET['itens']);
 ?>
 <div class="container ml-2 mr-2">
 	<nav class="navbar navbar-expand navbar-white navbar-light">
-		
+
 		<a id="btn-novo" type="button" class="btn btn-primary" href="index.php?acao=<?php echo $pagina ?>&funcao=novo">Novo Balconista</a>
-		
+
 		<form method="post" id="frm">
 			<input type="hidden" name="pag" id="pag" value="<?php echo $pagina_pag ?>">
 			<input type="hidden" name="itens_pag" id="itens_pag" value="<?php echo $itens_pag ?>">
 		</form>
-		
+
 
 		<div class="direita">
 			<!-- SEARCH FORM -->
@@ -33,7 +33,7 @@ $itens_pag = intval(@$_GET['itens']);
 	</nav>
 
 	<div id="listar">
-		
+
 	</div>
 </div>
 
@@ -47,7 +47,7 @@ $itens_pag = intval(@$_GET['itens']);
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<?php if(@$_GET['funcao']=='editar'){
+				<?php if (@$_GET['funcao'] == 'editar') {
 					$titulo_modal = 'Editar Dados';
 					$botao = 'Editar';
 
@@ -61,10 +61,9 @@ $itens_pag = intval(@$_GET['itens']);
 					$usuario = $dados[0]['usuario'];
 					$senha = $dados[0]['senha'];
 					$nivel = $dados[0]['nivel'];
-					
-					$form = 'form-editar';
 
-				}else{
+					$form = 'form-editar';
+				} else {
 					$titulo_modal = 'Inserir Novo';
 					$botao = 'Salvar';
 					$form = 'form-inserir';
@@ -110,39 +109,47 @@ $itens_pag = intval(@$_GET['itens']);
 						<label for="exampleFormControlInput1">Usuário</label>
 						<input type="email" class="form-control" id="usuario" placeholder="Insira o Email " name="usuario" value="<?php echo @$usuario ?>" required>
 					</div>
+					<div class="form-group">
 
 
+						<label for="exampleFormControlInput1">Senha</label>
+						<input type="email" class="form-control" id="senha" placeholder="Insira nova Senha " name="senha" value="<?php echo @$senha ?>" required>
+					</div>
+
+			
 
 
-						<div align="center" id="mensagem" class="">
-
-						</div>
+					<div align="center" id="mensagem" class="">
 
 					</div>
-					<div class="modal-footer">
 
-						<input type="hidden" id="id" name="id" value="<?php echo @$id ?>">
-
-						<input type="hidden" id="reg_antigo" name="reg_antigo" value="<?php echo @$cpf ?>" required>
-
-						<button id="btn-fechar" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-
-						<button type="submit" name="<?php echo $botao ?>" id="<?php echo $botao ?>" class="btn btn-primary"><?php echo $botao ?></button>
-
-					</div>
-				</form>
 			</div>
+			<div class="modal-footer">
+
+				<input type="hidden" id="id" name="id" value="<?php echo @$id ?>">
+
+				<input type="hidden" id="reg_antigo" name="reg_antigo" value="<?php echo @$cpf ?>" required>
+
+				<button id="btn-fechar" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+
+				<button type="submit" name="<?php echo $botao ?>" id="<?php echo $botao ?>" class="btn btn-primary"><?php echo $botao ?></button>
+
+			</div>
+			</form>
 		</div>
 	</div>
+</div>
 
 
 
 <!--CHAMADA DA MODAL PARA NOVO REGISTRO OU EDIÇÃO -->
-<?php 
-if(@$_GET['funcao'] == 'novo' || @$_GET['funcao'] == 'editar'){ 
-	
-	?>
-	<script>$('#modal').modal("show");</script>
+<?php
+if (@$_GET['funcao'] == 'novo' || @$_GET['funcao'] == 'editar') {
+
+?>
+	<script>
+		$('#modal').modal("show");
+	</script>
 <?php } ?>
 
 
@@ -152,10 +159,10 @@ if(@$_GET['funcao'] == 'novo' || @$_GET['funcao'] == 'editar'){
 
 
 <!--CHAMADA DA MODAL DELETAR -->
-<?php 
-if(@$_GET['funcao'] == 'excluir' && @$item_paginado == ''){ 
+<?php
+if (@$_GET['funcao'] == 'excluir' && @$item_paginado == '') {
 	$id = $_GET['id'];
-	?>
+?>
 
 	<div class="modal" id="modal-deletar" tabindex="-1" role="dialog">
 		<div class="modal-dialog" role="document">
@@ -178,7 +185,7 @@ if(@$_GET['funcao'] == 'excluir' && @$item_paginado == ''){
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-dismiss="modal" id="btn-cancelar-excluir">Cancelar</button>
 					<form method="post">
-						<input type="hidden" id="id"  name="id" value="<?php echo @$id ?>" required>
+						<input type="hidden" id="id" name="id" value="<?php echo @$id ?>" required>
 
 						<button type="button" id="btn-deletar" name="btn-deletar" class="btn btn-danger">Excluir</button>
 					</form>
@@ -187,81 +194,83 @@ if(@$_GET['funcao'] == 'excluir' && @$item_paginado == ''){
 		</div>
 	</div>
 
-	
+
 <?php } ?>
 
-<script>$('#modal-deletar').modal("show");</script>
+<script>
+	$('#modal-deletar').modal("show");
+</script>
 
 
 
 <!--AJAX PARA INSERÇÃO DOS DADOS -->
 <script type="text/javascript">
-    $(document).ready(function(){
-        var pag = "<?=$pagina?>";
-        $('#Salvar').click(function(event){
-            event.preventDefault();
-            
-            $.ajax({
-                url: pag + "/inserir.php",
-                method: "post",
-                data: $('form').serialize(),
-                dataType: "text",
-                success: function(mensagem){
+	$(document).ready(function() {
+		var pag = "<?= $pagina ?>";
+		$('#Salvar').click(function(event) {
+			event.preventDefault();
 
-                    $('#mensagem').removeClass()
+			$.ajax({
+				url: pag + "/inserir.php",
+				method: "post",
+				data: $('form').serialize(),
+				dataType: "text",
+				success: function(mensagem) {
 
-                    if(mensagem == 'Cadastrado com Sucesso!!'){
-                        
-                        $('#mensagem').addClass('text-success')
+					$('#mensagem').removeClass()
 
-                       
-                        $('#nome').val('')
-                      
-                        $('#btn-buscar').click();
-                        //$('#btn-fechar').click();
-                        //location.reload();
+					if (mensagem == 'Cadastrado com Sucesso!!') {
+
+						$('#mensagem').addClass('text-success')
 
 
-                    }else{
-                        
-                        $('#mensagem').addClass('text-danger')
-                    }
-                    
-                    $('#mensagem').text(mensagem)
+						$('#nome').val('')
 
-                },
-                
-            })
-        })
-    })
+						$('#btn-buscar').click();
+						//$('#btn-fechar').click();
+						//location.reload();
+
+
+					} else {
+
+						$('#mensagem').addClass('text-danger')
+					}
+
+					$('#mensagem').text(mensagem)
+
+				},
+
+			})
+		})
+	})
 </script>
 
 
 
 <!--AJAX PARA BUSCAR OS DADOS -->
 <script type="text/javascript">
-	$(document).ready(function(){
+	$(document).ready(function() {
 
-		var pag = "<?=$pagina?>";
-		$('#btn-buscar').click(function(event){
-			event.preventDefault();	
-			
+		var pag = "<?= $pagina ?>";
+		$('#btn-buscar').click(function(event) {
+			event.preventDefault();
+
 			$.ajax({
 				url: pag + "/listar.php",
 				method: "post",
 				data: $('form').serialize(),
 				dataType: "html",
-				success: function(result){
+				success: function(result) {
 					$('#listar').html(result)
-					
+
 				},
-				
+
 
 			})
 
 		})
 
-		
+
 	})
 </script>
 
@@ -274,21 +283,21 @@ if(@$_GET['funcao'] == 'excluir' && @$item_paginado == ''){
 
 <!--AJAX PARA LISTAR OS DADOS -->
 <script type="text/javascript">
-	$(document).ready(function(){
-		
-		var pag = "<?=$pagina?>";
+	$(document).ready(function() {
+
+		var pag = "<?= $pagina ?>";
 
 		$.ajax({
 			url: pag + "/listar.php",
 			method: "post",
 			data: $('#frm').serialize(),
 			dataType: "html",
-			success: function(result){
+			success: function(result) {
 				$('#listar').html(result)
 
 			},
 
-			
+
 		})
 	})
 </script>
@@ -297,7 +306,7 @@ if(@$_GET['funcao'] == 'excluir' && @$item_paginado == ''){
 
 <!--AJAX PARA BUSCAR OS DADOS PELA TXT -->
 <script type="text/javascript">
-	$('#txtbuscar').keyup(function(){
+	$('#txtbuscar').keyup(function() {
 		$('#btn-buscar').click();
 	})
 </script>
@@ -308,44 +317,44 @@ if(@$_GET['funcao'] == 'excluir' && @$item_paginado == ''){
 
 <!--AJAX PARA EDIÇÃO DOS DADOS -->
 <script type="text/javascript">
-    $(document).ready(function(){
-        var pag = "<?=$pagina?>";
-        $('#Editar').click(function(event){
-            event.preventDefault();
-            
-            $.ajax({
-                url: pag + "/editar.php",
-                method: "post",
-                data: $('form').serialize(),
-                dataType: "text",
-                success: function(mensagem){
+	$(document).ready(function() {
+		var pag = "<?= $pagina ?>";
+		$('#Editar').click(function(event) {
+			event.preventDefault();
 
-                    $('#mensagem').removeClass()
+			$.ajax({
+				url: pag + "/editar.php",
+				method: "post",
+				data: $('form').serialize(),
+				dataType: "text",
+				success: function(mensagem) {
 
-                    if(mensagem == 'Editado com Sucesso!!'){
-                        
-                        $('#mensagem').addClass('text-success')
+					$('#mensagem').removeClass()
 
-                       
-                        $('#nome').val('')
-                      
-                        $('#btn-buscar').click();
-                        //$('#btn-fechar').click();
-                        //location.reload();
+					if (mensagem == 'Editado com Sucesso!!') {
+
+						$('#mensagem').addClass('text-success')
 
 
-                    }else{
-                        
-                        $('#mensagem').addClass('text-danger')
-                    }
-                    
-                    $('#mensagem').text(mensagem)
+						$('#nome').val('')
 
-                },
-                
-            })
-        })
-    })
+						$('#btn-buscar').click();
+						//$('#btn-fechar').click();
+						//location.reload();
+
+
+					} else {
+
+						$('#mensagem').addClass('text-danger')
+					}
+
+					$('#mensagem').text(mensagem)
+
+				},
+
+			})
+		})
+	})
 </script>
 
 
@@ -354,37 +363,37 @@ if(@$_GET['funcao'] == 'excluir' && @$item_paginado == ''){
 
 <!--AJAX PARA EXCLUSÃO DOS DADOS -->
 <script type="text/javascript">
-	$(document).ready(function(){
-		var pag = "<?=$pagina?>";
-		$('#btn-deletar').click(function(event){
+	$(document).ready(function() {
+		var pag = "<?= $pagina ?>";
+		$('#btn-deletar').click(function(event) {
 			event.preventDefault();
-			
+
 			$.ajax({
 				url: pag + "/excluir.php",
 				method: "post",
 				data: $('form').serialize(),
 				dataType: "text",
-				success: function(mensagem){
+				success: function(mensagem) {
 
 					$('#mensagem_excluir').removeClass()
 
-                    if(mensagem == 'Excluído com Sucesso!!'){
-                        
-                        $('#txtbuscar').val('')
+					if (mensagem == 'Excluído com Sucesso!!') {
+
+						$('#txtbuscar').val('')
 						$('#btn-buscar').click();
 						$('#btn-cancelar-excluir').click();
 
-                    }else{
-                        
-                        $('#mensagem_excluir').addClass('text-danger')
-                    }
-                    
-                    $('#mensagem_excluir').text(mensagem)
+					} else {
 
-					
+						$('#mensagem_excluir').addClass('text-danger')
+					}
+
+					$('#mensagem_excluir').text(mensagem)
+
+
 
 				},
-				
+
 			})
 		})
 	})
