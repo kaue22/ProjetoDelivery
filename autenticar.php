@@ -65,5 +65,12 @@ if ($linhas > 0) {
 //GOOGLE teste
 
 
+if (empty($_SESSION["userLogin"])) {
+	echo "<h1>Teste</h1>";
+}else{
+	echo "<h1>User</h1>";
+	var_dump($_SESSION["userLogin"]);
+}
+
 
 ob_end_flush();

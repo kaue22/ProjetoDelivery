@@ -351,7 +351,7 @@ include_once("conexao.php");
 
                   $id_item = $dados[$i]['id'];  
                   $nome_item = $dados[$i]['nome'];
-
+                  
                   if($nome_dado != $nome_item){
                     echo '<option value="'.$nome_item.'">'.$nome_item.'</option>';
                   }

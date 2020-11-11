@@ -183,7 +183,7 @@ if (isset($_POST['email2']) and $_POST['email2'] != '') {
                         <input type="password" class="form-control" id="senha" name="senha" placeholder="Senha" required>
 
                     </div>
-
+                    
 
                     <div align="center" class="" id="mensagem">
                     </div>
