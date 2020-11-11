@@ -113,7 +113,8 @@ $itens_pag = intval(@$_GET['itens']);
 
 
 						<label for="exampleFormControlInput1">Senha</label>
-						<input type="email" class="form-control" id="senha" placeholder="Insira nova Senha " name="senha" value="<?php echo @$senha ?>" required>
+						<input type="password" class="form-control" id="senha" placeholder="Insira nova Senha " name="senha" value="<?php echo @$senha ?>" required>
+								
 					</div>
 
 			

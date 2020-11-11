@@ -180,7 +180,7 @@ if (isset($_POST['email2']) and $_POST['email2'] != '') {
 
                     <div class="form-group">
                         <label class="text-dark" for="exampleInputEmail1">Senha</label>
-                        <input type="text" class="form-control" id="senha" name="senha" placeholder="Senha" required>
+                        <input type="password" class="form-control" id="senha" name="senha" placeholder="Senha" required>
 
                     </div>
 
