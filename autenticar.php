@@ -2,6 +2,8 @@
 
 require_once("conexao.php");
 @session_start();
+ob_start();
+
 
 if (empty($_POST['username']) || empty($_POST['pass'])) {
 	echo "<script language='javascript'>window.location='login.php'; </script>";
@@ -59,3 +61,9 @@ if ($linhas > 0) {
 	echo "<script language='javascript'>window.alert('Dados Incorretos!!'); </script>";
 	echo "<script language='javascript'>window.location='login.php'; </script>";
 }
+
+//GOOGLE teste
+
+
+
+ob_end_flush();
