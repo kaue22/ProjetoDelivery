@@ -9,10 +9,10 @@ $telefone = $_POST['telefone'];
 $senha = $_POST['senha'];
 
 if($senha == true){
-    echo($senha);
-    echo("<br/>");
+   // echo($senha);
+   // echo("<br/>");
     $senhaNew = base64_encode($senha);
-    echo($senhaNew);
+  //  echo($senhaNew);
    
 }
 //CONSULTA PARA TRAZER O CPF E EMAIL CASO JÁ EXISTA NO BANCO

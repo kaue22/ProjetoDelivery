@@ -3,9 +3,9 @@ header("Access-Control-Allow-Origin: *");
 header('Access-Control-Allow-Headers: *');
 include_once('conexao.php');
 
-
 $postjson = json_decode(file_get_contents('php://input'), true);
-
+echo ($_POST);
+die();
 
 if($postjson['requisicao'] == 'login'){
 
@@ -243,8 +243,4 @@ $res = $pdo->prepare("SELECT * from usuarios where usuario = :usuario");
 
 
 }
-
-
-
-
 ?>

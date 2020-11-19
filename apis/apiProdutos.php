@@ -1,15 +1,18 @@
 <?php
 
 include_once('conexao.php');
-header("Access-Control-Allow-Origin: *");
+/*header("Access-Control-Allow-Origin: *");
 header('Access-Control-Allow-Headers: *');
-
+*/
 $postjson = json_decode(file_get_contents('php://input'), true);
+
 
 
 if($postjson['requisicao'] == 'listar-produtos'){
 
-	$id_cat = $postjson['id_cat'];
+  $id_cat = $postjson['id_cat'];
+  
+
   $buscar = '%'.$postjson['buscar'].'%';
 
 	if($id_cat > 0){
@@ -59,7 +62,8 @@ if($postjson['requisicao'] == 'listar-produtos'){
 
 
 
-
+            echo("POST_JSON");
+            var_dump($postjson);
 
 }else if($postjson['requisicao'] == 'listar-cat'){
 

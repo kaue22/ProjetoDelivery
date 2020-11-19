@@ -1,6 +1,7 @@
 <?php
 
 include_once("conexao.php");
+//include_once("google-login.php");
 
 if (isset($_POST['email2']) and $_POST['email2'] != '') {
     $email_rec = $_POST['email2'];
@@ -34,7 +35,7 @@ if (isset($_POST['email2']) and $_POST['email2'] != '') {
 
 
     <!-----------Login google --------------->
-    
+
 </head>
 
 
@@ -68,7 +69,7 @@ if (isset($_POST['email2']) and $_POST['email2'] != '') {
         <!-- Facebook -->
         <!--  <button type="button" class="btn btn-fb"><i class="fab fa-facebook-f pr-1"></i> Facebook</button> -->
         <!--Google +-->
-        <!-- <button type="button" class="btn btn-gplus"><i class="fab fa-google pr-1"></i> Google</button> -->
+        <button type="btn-google" id="btn-google" class="btn btn-gplus"><i class="fab fa-google pr-1"></i> Google</button>
         <!--Instagram-->
         <!--  <button type="button" class="btn btn-ins"><i class="fab fa-instagram pr-1"></i> Instagram</button>-->
         <!--  </div> -->
@@ -183,7 +184,7 @@ if (isset($_POST['email2']) and $_POST['email2'] != '') {
                         <input type="password" class="form-control" id="senha" name="senha" placeholder="Senha" required>
 
                     </div>
-                    
+
 
                     <div align="center" class="" id="mensagem">
                     </div>
@@ -326,16 +327,15 @@ if (isset($_POST['email2']) and $_POST['email2'] != '') {
 </script>
 
 
-
-
+<!--AJAX PARA GOOGLE -->
 
 <!--AJAX PARA RECUPERAR A SENHA -->
 <script type="text/javascript">
     $(document).ready(function() {
-
+     
         $('#btn-rec').click(function(event) {
             event.preventDefault();
-
+          
             $.ajax({
                 url: "recuperar.php",
                 method: "post",
@@ -375,7 +375,23 @@ if (isset($_POST['email2']) and $_POST['email2'] != '') {
 </script>
 
 
-<script type="text/javascript">
-    
 
+<script type="text/javascript">
+    $(document).ready(function() {
+        console.log("to aquii1");
+        $('#btn-google').click(function(event) {
+            event.preventDefault();
+            console.log("to aquii2");
+            $.ajax({
+                url: "google-login.php",
+                method: "get",
+                dataType: "json",
+                success: function(mensagem) {
+                    
+
+                }
+
+            })
+        })
+    })
 </script>
